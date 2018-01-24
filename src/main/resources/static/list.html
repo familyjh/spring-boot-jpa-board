@@ -21,7 +21,7 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/form.html">회원가입</a></li>
 					<li><a href="/list.html">사용자 목록</a></li>
 				</ul>
@@ -30,9 +30,31 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-	<h1>Hi, world!</h1>
-	안녕하세요.
-
+	<div class="container">
+		<table class="table table-condensed">
+			<caption>사용자 목록</caption>
+			<thead>
+				<tr>
+					<th>사용자 아이디</th>
+					<th>이름</th>
+					<th>이메일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">javajigi</th>
+					<td>자바지기</td>
+					<td>javajigi@slipp.net</td>
+				</tr>
+				<tr>
+					<th scope="row">sanjigi</th>
+					<td>산지기</td>
+					<td>sanjigi@slipp.net</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
