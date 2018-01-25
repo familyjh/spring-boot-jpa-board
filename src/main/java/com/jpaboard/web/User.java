@@ -26,6 +26,5 @@ public class User {
     public String toString() {
         return "User [userID=" + userID + ", userPWD=" + userPWD + ", userName=" + userName + ", userEmail=" + userEmail+ "]";
     }
-
     
 }
