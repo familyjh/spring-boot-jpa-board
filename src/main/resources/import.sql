@@ -1,0 +1,1 @@
+INSERT INTO USER (USERID, USERPWD, USER_NAME, USER_EMAIL) VALUES ('familyjh','1234','김재홍','familyjh@gmail.com');
