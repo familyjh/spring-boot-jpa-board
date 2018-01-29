@@ -26,6 +26,10 @@ public class User {
         this.userPWD = userPWD;
     }
 
+    public String getPassword() {
+		return userPWD;
+	}
+    
     public void setUserName(String userName) {
         this.userName = userName;
     }
