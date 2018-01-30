@@ -65,5 +65,10 @@ public class User {
 		this.userName = newUser.userName;
 		this.userEmail = newUser.userEmail;
 	}
+
+	public String getUserId() {
+		// TODO Auto-generated method stub
+		return userID;
+	}
  
 }
