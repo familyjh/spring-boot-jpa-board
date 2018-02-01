@@ -2,7 +2,6 @@ package com.jpaboard.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -11,40 +10,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 
 @Entity
-public class Question {
+public class Answer {
 	@Id
 	@GeneratedValue
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name = "fk_question_writer"))
+	@JoinColumn(foreignKey = @ForeignKey(name = "fk_answer_writer"))
 	private User writer;
 	
-	private String title;
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name = "fk_answer_to_question"))
+	private Question question;
 	
 	@Lob
 	private String contents;
 	
 	private LocalDateTime createDate;
 	
-	@OneToMany(mappedBy="question")
-	@OrderBy("id ASC")
-	private List<Answer> answers;	
+	public Answer() {
+		// TODO Auto-generated constructor stub
+	}
 	
-	public Question() {}
-	
-	public Question(User writer, String title, String contents) {
-		super();
+	public Answer(User writer, Question question, String contents) {
 		this.writer = writer;
-		this.title = title;
+		this.question = question;
 		this.contents = contents;
 		this.createDate = LocalDateTime.now();
 	}
-	
+
 	public String getFormattedCreateDate() {
 		if (createDate == null) {
 			return "";
@@ -52,16 +48,7 @@ public class Question {
 		
 		return createDate.format(DateTimeFormatter.ofPattern("yyy.MM.dd HH:mm:ss"));
 	}
-
-	public void update(String title, String contents) {
-		this.title = title;
-		this.contents = contents;
-	}
-
-	public boolean isSameWriter(User loginUser) {
-		return this.writer.equals(loginUser);
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -78,13 +65,20 @@ public class Question {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Question other = (Question) obj;
+		Answer other = (Answer) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Answer [id=" + id + ", writer=" + writer + ", contents=" + contents + ", createDate=" + createDate
+				+ "]";
+	}
+	
 	
 }
