@@ -80,12 +80,12 @@ public class UserController {
     
     @GetMapping("/{id}/form")
     public String updateForm(@PathVariable Long id, Model model, HttpSession session) {
-    	if (HttpSessionUtills.isLoginUser(session)) {
+    	if (!HttpSessionUtills.isLoginUser(session)) {
     		return "redirect:/users/form";
     	}
     	
     	User sessionedUser = HttpSessionUtills.getUserFromSession(session);    	
-    	if (!sessionedUser.matchID(id)) {
+    	if (!sessionedUser.matchId(id)) {
     		throw new IllegalStateException("You can't, update anther user");
     	}
     	
@@ -94,16 +94,15 @@ public class UserController {
     	return "/user/updateForm";
     }
     
-    //@PostMapping("/{id}")
     @PutMapping("/{id}")
     public String update(@PathVariable Long id, User updateUser, HttpSession session) {
-    	if (HttpSessionUtills.isLoginUser(session)) {
+    	if (!HttpSessionUtills.isLoginUser(session)) {
     		return "redirect:/users/form";
     	}
     	
     	User sessionedUser = HttpSessionUtills.getUserFromSession(session);
     	
-    	if (!sessionedUser.matchID(id)) {
+    	if (!sessionedUser.matchId(id)) {
     		throw new IllegalStateException("You can't, update anther user");
     	}    	
     	
