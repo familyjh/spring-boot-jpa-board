@@ -33,11 +33,19 @@ public class AbstractEntity {
 	}
 	
 	public String getFormattedCreateDate() {
-		if (createDate == null) {
+		return getFormattedDate(createDate, "yyy.MM.dd HH:mm:ss");
+	}
+
+	public String getFormattedModifiedDate() {
+		return getFormattedDate(modifiedDate, "yyy.MM.dd HH:mm:ss");
+	}	
+	
+	private String getFormattedDate(LocalDateTime dateTime, String format) {
+		if (dateTime == null) {
 			return "";
 		}
 		
-		return createDate.format(DateTimeFormatter.ofPattern("yyy.MM.dd HH:mm:ss"));
+		return dateTime.format(DateTimeFormatter.ofPattern(format));
 	}
 	
 	@Override
